@@ -1,16 +1,8 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 from typing import Optional
 
-class UserBase(BaseModel):
+class User(BaseModel):
     username: str
-    email: EmailStr
-
-class UserCreate(UserBase):
+    email: str
     password: str
-
-class UserResponse(UserBase):
-    id: int
-
-class UserUpdate(BaseModel):
-    username: Optional[str] = None
-    email: Optional[EmailStr] = None
+    role: Optional[str] = "user"  # Campo de rol con valor predeterminado "user"
