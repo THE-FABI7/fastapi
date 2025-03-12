@@ -58,3 +58,10 @@ async def get_all_users():
         user["_id"] = str(user["_id"])
         users.append(user)
     return users
+
+@app.post("/admin/users/")
+async def create_admin_user(user: User, current_user: User = Depends(lambda: verify_role(user_id="some_user_id", required_role="admin"))):
+    user_dict = user.dict()
+    user_dict["role"] = "admin"  # Asignar rol de administrador
+    result = await users_collection.insert_one(user_dict)
+    return {"id": str(result.inserted_id)}

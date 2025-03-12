@@ -4,7 +4,7 @@ import os
 
 load_dotenv()
 
-MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://user_eventos:Woexhjvql7GYe3ea@tallerprog3.7h2ert5.mongodb.net")
+MONGO_URI = os.getenv("MONGO_URI")
 DATABASE_NAME = "fastapi"
 
 try:
